@@ -27,7 +27,8 @@
 /* Script body goes here */
 with (global.gwtransition)
 {
-	global.gstate = argument[0];
 	if (argument_count > 1) target = argument[1];
 	if (argument_count > 2) timer = argument[2];
+	
+	global.gstate = argument[0];
 }

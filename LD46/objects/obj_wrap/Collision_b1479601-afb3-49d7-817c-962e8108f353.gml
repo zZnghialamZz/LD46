@@ -20,8 +20,9 @@
 
 /// @description	Go to the destination
 
-win_transition(eGAME.goto, rmtarget, 10);
-obj_player.x = xtarget;
-obj_player.y = ytarget;
-
-show_debug_message(rmtarget);
+if (rmtarget != room)
+{
+	win_transition(eGAME.goto, rmtarget, 10);
+	obj_player.x = xtarget;
+	obj_player.y = ytarget;
+}

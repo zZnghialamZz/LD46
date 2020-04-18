@@ -41,12 +41,12 @@ global.has_grv		= true; // Platformer only
 #region Init Managers
 global.gstate		= eGAME.transition; // Transition Fade at start screen.
 
-global.audio		= instance_create_layer(0, 0, layer, obj_audio);
-global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
-global.gcam			= instance_create_layer(0, 0, layer, obj_camera);
-global.gcontroller	= instance_create_layer(0, 0, layer, obj_controller);
+if (!instance_exists(obj_audio))		global.audio		= instance_create_layer(0, 0, layer, obj_audio);
+if (!instance_exists(obj_wm))			global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
+if (!instance_exists(obj_camera))		global.gcam 		= instance_create_layer(0, 0, layer, obj_camera);
+if (!instance_exists(obj_controller))	global.gcontroller 	= instance_create_layer(0, 0, layer, obj_controller);
 
-global.gwtransition	= instance_create_depth(0, 0, -1000, obj_wtrans);
+if (!instance_exists(obj_wtrans))		global.gwtransition	= instance_create_depth(0, 0, -1000, obj_wtrans);
 #endregion
 
 
