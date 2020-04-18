@@ -20,7 +20,7 @@
 
 /// @description	Movement statistic management
 
-if (global.pause) exit;
+if (global.gstate != eGAME.run) exit;
 
 
 #region Update Stats

@@ -20,7 +20,7 @@
 
 /// @description	Draw the transition
 
-if (!is_done) {
+if (global.gstate != eGAME.run) {
 	switch (type)
 	{
 		case eTRANSTYPE.fade:
@@ -34,6 +34,7 @@ if (!is_done) {
 		case eTRANSTYPE.close_in:
 		{
 			draw_set_color(c_black);
+			draw_set_alpha(1);
 			draw_rectangle(0, 0, w, percent * h_half, false);
 			draw_rectangle(0, h, w, h - (percent * h_half), false);
 			break;

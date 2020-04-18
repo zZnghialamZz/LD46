@@ -33,6 +33,7 @@ key_down	= 0;
 key_jump	= 0;
 key_action	= 0;
 key_pause	= 0;
+key_dash	= 0;
 
 use_gamepad	= false;
 current_use = eCONTROLLER.keyboard;

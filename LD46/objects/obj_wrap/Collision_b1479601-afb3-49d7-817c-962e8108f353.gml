@@ -18,18 +18,10 @@
 
 /* ********************************************************************* */
 
-/// @description	Handle Double Jump and update Anim
+/// @description	Go to the destination
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+win_transition(eGAME.goto, rmtarget, 10);
+obj_player.x = xtarget;
+obj_player.y = ytarget;
 
-// Double Jump
-if (can_dash && global.gcontroller.key_dash)
-{
-	can_dash = false;
-	dashing_counter = dashing_max;
-	
-	input_direction = point_direction(0, 0, global.gcontroller.key_right - global.gcontroller.key_left, global.gcontroller.key_down - global.gcontroller.key_up);
-	input_magnitude = (global.gcontroller.key_right - global.gcontroller.key_left != 0) || (global.gcontroller.key_down - global.gcontroller.key_up != 0);
-	dx = lengthdir_x(input_magnitude * dash_spd, input_direction);
-	dy = lengthdir_y(input_magnitude * dash_spd, input_direction);
-}
+show_debug_message(rmtarget);

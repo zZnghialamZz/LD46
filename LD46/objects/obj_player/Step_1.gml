@@ -20,7 +20,7 @@
 
 /// @description	Calculate input and check state
 
-if (global.pause) exit; // Skip this step when game pause
+if (global.gstate != eGAME.run) exit; // Skip this step when game pause
 
 
 // Get Input (Platformer)
@@ -43,11 +43,11 @@ else { dashing_counter--; }
 if (!onland) {
 	if (coyote_counter > 0) {
 		coyote_counter--;
+		can_dash = true;
 		
 		if (!jumped && global.gcontroller.key_jump) {
 			dy -= (jump_h + mGravity * (coyote_max - coyote_counter)); // Ensure full jump with gravity still apply
 			jumped = true;
-			can_dash = true;
 		}
 	}
 } else {
@@ -70,7 +70,7 @@ if (buffer_counter > 0) {
 }
 
 // Gliding
-if (state == ePSTATE.jumping && dashing_counter == 0 && sign(dy) > 0 && global.gcontroller.key_up) 
+if (state == ePSTATE.jumping && sign(dy) > 0 && global.gcontroller.key_up) 
 {
 	dy -= 0.2;
 }

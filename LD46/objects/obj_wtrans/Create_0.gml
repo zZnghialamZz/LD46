@@ -18,8 +18,9 @@
 
 /* ********************************************************************* */
 
-/// @description	Values Definition  
+/// @description	Values Definition
 
+// Define variables
 #region Enum Define
 enum eTRANSTYPE
 {
@@ -28,14 +29,13 @@ enum eTRANSTYPE
 }
 #endregion
 
-is_done = false;
 percent = 1;
 timer = 60;
 
-w = display_get_gui_width();
-h = display_get_gui_height();
+w = mResW;
+h = mResH;
 h_half = h / 2;
 
-target = room;
+target = -1;
 type = eTRANSTYPE.fade;	// Using fade option as default.
 
