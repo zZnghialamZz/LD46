@@ -23,6 +23,8 @@
 // Windows Settings
 #macro mResW	320
 #macro mResH	180
+#macro mCenterWindow obj_wm.alarm[0] = 1 // Call Alarm0 after 1 frame
+#macro mResizeWindow obj_wm.alarm[1] = 1 // Call Alarm1 after 1 frame
 
 // Gameplay Stats
 #macro mGameFPS		60

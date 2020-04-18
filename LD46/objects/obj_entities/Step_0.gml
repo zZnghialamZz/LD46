@@ -49,7 +49,7 @@ if (place_meeting(x, y + _y, obj_coll)) {
 y += _y;
 #endregion
 
-#region In Air Status
+#region On Land Status
 if (place_meeting(x, y + 1, obj_coll)) { onland = true; }
 else onland = false;
 #endregion

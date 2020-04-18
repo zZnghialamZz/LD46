@@ -23,13 +23,63 @@
 if (global.pause) exit; // Skip this step when game pause
 
 
-#region Get Input (Platformer)
-// X
+// Get Input (Platformer)
+
+#region X -------------------------------
+
 dir = global.gcontroller.key_right - global.gcontroller.key_left;
 dx += (dir * walk_spd);
-// Y
-if (global.has_grv) { dy += mGravity; }
-if (onland) && (global.gcontroller.key_jump) { dy -= jump_h; }
 
 #endregion
 
+
+#region Y -------------------------------
+
+// Gravity
+if (global.has_grv && dashing_counter == 0) { dy += mGravity; }
+else { dashing_counter--; }
+
+// Coyote Timer
+if (!onland) {
+	if (coyote_counter > 0) {
+		coyote_counter--;
+		
+		if (!jumped && global.gcontroller.key_jump) {
+			dy -= (jump_h + mGravity * (coyote_max - coyote_counter)); // Ensure full jump with gravity still apply
+			jumped = true;
+			can_dash = true;
+		}
+	}
+} else {
+	can_dash = false;
+	jumped = false;
+	coyote_counter = coyote_max;
+}
+
+// Jump Buffer
+if (global.gcontroller.key_jump) { buffer_counter = buffer_max }
+if (buffer_counter > 0) {
+	buffer_counter--;
+	if (onland) { 
+		dy -= jump_h;
+		jumped = true;	
+		can_dash = true;
+		
+		coyote_counter = 0; // Not need when jump on land
+	}
+}
+
+// Gliding
+if (state == ePSTATE.jumping && dashing_counter == 0 && sign(dy) > 0 && global.gcontroller.key_up) 
+{
+	dy -= 0.2;
+}
+
+#endregion
+
+// Update state
+if (!onland) { state = ePSTATE.jumping; }
+else {
+	if (dx != 0) { state = ePSTATE.running; }
+	else { state = ePSTATE.idle; }
+}

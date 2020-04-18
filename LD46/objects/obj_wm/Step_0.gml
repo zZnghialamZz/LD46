@@ -18,36 +18,11 @@
 
 /* ********************************************************************* */
 
-/// @description	Init Game Values
+/// @description	Check for Window Adjustments
 
-#region Global Variables
-enum eGAME
+var _full = window_get_fullscreen();
+if (global.fullscreen != _full) 
 {
-	run,
-	next,
-	goto,
-	pause,
-	restart,
-	quit,
-	transition
+	global.fullscreen = _full;
+	if (!global.fullscreen) { mResizeWindow; } // If we switch from fullscreen, we need to re-adjust window
 }
-
-global.pause		= false;
-global.quit			= false;
-global.sound		= true;
-
-global.has_grv		= true; // Platformer only
-#endregion
-
-#region Init Managers
-global.gstate		= eGAME.transition; // Transition Fade at start screen.
-
-global.audio		= instance_create_layer(0, 0, layer, obj_audio);
-global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
-global.gcam			= instance_create_layer(0, 0, layer, obj_camera);
-global.gcontroller	= instance_create_layer(0, 0, layer, obj_controller);
-#endregion
-
-
-// Fade Screen At Startup
-win_transition(eGAME.transition);

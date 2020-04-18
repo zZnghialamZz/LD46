@@ -18,36 +18,6 @@
 
 /* ********************************************************************* */
 
-/// @description	Init Game Values
+/// @description	Center Window
 
-#region Global Variables
-enum eGAME
-{
-	run,
-	next,
-	goto,
-	pause,
-	restart,
-	quit,
-	transition
-}
-
-global.pause		= false;
-global.quit			= false;
-global.sound		= true;
-
-global.has_grv		= true; // Platformer only
-#endregion
-
-#region Init Managers
-global.gstate		= eGAME.transition; // Transition Fade at start screen.
-
-global.audio		= instance_create_layer(0, 0, layer, obj_audio);
-global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
-global.gcam			= instance_create_layer(0, 0, layer, obj_camera);
-global.gcontroller	= instance_create_layer(0, 0, layer, obj_controller);
-#endregion
-
-
-// Fade Screen At Startup
-win_transition(eGAME.transition);
+window_center();

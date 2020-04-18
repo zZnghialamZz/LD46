@@ -18,36 +18,27 @@
 
 /* ********************************************************************* */
 
-/// @description	Init Game Values
+/// @description	Windows Aspect Ratio Management
 
-#region Global Variables
-enum eGAME
+#region Define Enum for Window Management
+enum eASPECT 
 {
-	run,
-	next,
-	goto,
-	pause,
-	restart,
-	quit,
-	transition
+	_16x9,
+	_21x9,
+	_1x1,
+	_4x3
 }
-
-global.pause		= false;
-global.quit			= false;
-global.sound		= true;
-
-global.has_grv		= true; // Platformer only
 #endregion
 
-#region Init Managers
-global.gstate		= eGAME.transition; // Transition Fade at start screen.
+global.fullscreen	= false;
 
-global.audio		= instance_create_layer(0, 0, layer, obj_audio);
-global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
-global.gcam			= instance_create_layer(0, 0, layer, obj_camera);
-global.gcontroller	= instance_create_layer(0, 0, layer, obj_controller);
-#endregion
+cur_w = mResW;
+cur_h = mResH;
+win_scale = 3;
+gui_scale = 1;
+subpx_scale = win_scale;
 
 
-// Fade Screen At Startup
-win_transition(eGAME.transition);
+// Apply Default Settings
+window_set_fullscreen(global.fullscreen);
+mResizeWindow;

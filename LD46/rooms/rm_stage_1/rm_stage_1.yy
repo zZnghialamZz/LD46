@@ -8,8 +8,6 @@
     "inheritLayers": false,
     "instanceCreationOrderIDs": [
         "3a1d4fca-f3e2-45d9-8cab-e900e3770b6d",
-        "0b68b478-bcbe-44b4-a941-9f50b7cb85a4",
-        "5d6bf940-6fd3-4292-bbc6-ee98138f6156",
         "c5686a7c-98d5-4e58-995c-0a3e337c6d22",
         "dfe2e8ed-a110-4748-ae6a-baa5826405cc",
         "1ebd77a0-7f8f-4462-9961-316485ec3f73",
@@ -149,9 +147,7 @@
             "inheritSubLayers": false,
             "inheritVisibility": false,
             "instances": [
-{"name": "inst_game","id": "3a1d4fca-f3e2-45d9-8cab-e900e3770b6d","colour": { "Value": 4294967295 },"creationCodeFile": "","creationCodeType": "","ignore": false,"imageIndex": 0,"imageSpeed": 1,"inheritCode": false,"inheritItemSettings": false,"IsDnD": false,"m_originalParentID": "00000000-0000-0000-0000-000000000000","m_serialiseFrozen": false,"modelName": "GMRInstance","name_with_no_file_rename": "inst_game","objId": "9e0c3ae8-bd40-4f17-94d5-eed43fdc7687","properties": null,"rotation": 0,"scaleX": 1,"scaleY": 1,"mvc": "1.1","x": 0,"y": 0},
-{"name": "inst_camera","id": "0b68b478-bcbe-44b4-a941-9f50b7cb85a4","colour": { "Value": 4294967295 },"creationCodeFile": "","creationCodeType": "","ignore": false,"imageIndex": 0,"imageSpeed": 1,"inheritCode": false,"inheritItemSettings": false,"IsDnD": false,"m_originalParentID": "00000000-0000-0000-0000-000000000000","m_serialiseFrozen": false,"modelName": "GMRInstance","name_with_no_file_rename": "inst_camera","objId": "66404d5c-291a-4e51-bd2d-d1fc3445d742","properties": null,"rotation": 0,"scaleX": 1,"scaleY": 1,"mvc": "1.1","x": 0,"y": 0},
-{"name": "inst_controller","id": "5d6bf940-6fd3-4292-bbc6-ee98138f6156","colour": { "Value": 4294967295 },"creationCodeFile": "","creationCodeType": "","ignore": false,"imageIndex": 0,"imageSpeed": 1,"inheritCode": false,"inheritItemSettings": false,"IsDnD": false,"m_originalParentID": "00000000-0000-0000-0000-000000000000","m_serialiseFrozen": false,"modelName": "GMRInstance","name_with_no_file_rename": "inst_controller","objId": "e12ecfb7-0bb1-4067-9197-3de5faa8dd77","properties": null,"rotation": 0,"scaleX": 1,"scaleY": 1,"mvc": "1.1","x": 0,"y": 0}
+{"name": "inst_game","id": "3a1d4fca-f3e2-45d9-8cab-e900e3770b6d","colour": { "Value": 4294967295 },"creationCodeFile": "","creationCodeType": "","ignore": false,"imageIndex": 0,"imageSpeed": 1,"inheritCode": false,"inheritItemSettings": false,"IsDnD": false,"m_originalParentID": "00000000-0000-0000-0000-000000000000","m_serialiseFrozen": false,"modelName": "GMRInstance","name_with_no_file_rename": "inst_game","objId": "9e0c3ae8-bd40-4f17-94d5-eed43fdc7687","properties": null,"rotation": 0,"scaleX": 1,"scaleY": 1,"mvc": "1.1","x": 0,"y": 0}
             ],
             "layers": [
 

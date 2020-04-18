@@ -18,36 +18,19 @@
 
 /* ********************************************************************* */
 
-/// @description	Init Game Values
+/// @description	Handle Double Jump and update Anim
 
-#region Global Variables
-enum eGAME
+// Double Jump
+if (jumped && can_dash && global.gcontroller.key_jump)
 {
-	run,
-	next,
-	goto,
-	pause,
-	restart,
-	quit,
-	transition
+	can_dash = false;
+	dashing_counter = dashing_max;
+	
+	input_direction = point_direction(0, 0, global.gcontroller.key_right - global.gcontroller.key_left, global.gcontroller.key_down - global.gcontroller.key_up);
+	input_magnitude = (global.gcontroller.key_right - global.gcontroller.key_left != 0) || (global.gcontroller.key_down - global.gcontroller.key_up != 0);
+	dspd_x = lengthdir_x(input_magnitude * dash_spd, input_direction);
+	dspd_y = lengthdir_y(input_magnitude * dash_spd, input_direction);
+	
+	dx += dspd_x;
+	dy += dspd_y;
 }
-
-global.pause		= false;
-global.quit			= false;
-global.sound		= true;
-
-global.has_grv		= true; // Platformer only
-#endregion
-
-#region Init Managers
-global.gstate		= eGAME.transition; // Transition Fade at start screen.
-
-global.audio		= instance_create_layer(0, 0, layer, obj_audio);
-global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
-global.gcam			= instance_create_layer(0, 0, layer, obj_camera);
-global.gcontroller	= instance_create_layer(0, 0, layer, obj_controller);
-#endregion
-
-
-// Fade Screen At Startup
-win_transition(eGAME.transition);

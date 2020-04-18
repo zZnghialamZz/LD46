@@ -18,36 +18,13 @@
 
 /* ********************************************************************* */
 
-/// @description	Init Game Values
+/// @description	Resize Window and Application Surface when it is not fullscreen
 
-#region Global Variables
-enum eGAME
+surface_resize(application_surface, cur_w * subpx_scale, cur_h * subpx_scale);
+//display_set_gui_size(cur_w * gui_scale, cur_h * gui_scale);
+
+if (!window_get_fullscreen())
 {
-	run,
-	next,
-	goto,
-	pause,
-	restart,
-	quit,
-	transition
+	window_set_size(cur_w * win_scale, cur_h * win_scale);
+	mCenterWindow;
 }
-
-global.pause		= false;
-global.quit			= false;
-global.sound		= true;
-
-global.has_grv		= true; // Platformer only
-#endregion
-
-#region Init Managers
-global.gstate		= eGAME.transition; // Transition Fade at start screen.
-
-global.audio		= instance_create_layer(0, 0, layer, obj_audio);
-global.gwm			= instance_create_layer(0, 0, layer, obj_wm);
-global.gcam			= instance_create_layer(0, 0, layer, obj_camera);
-global.gcontroller	= instance_create_layer(0, 0, layer, obj_controller);
-#endregion
-
-
-// Fade Screen At Startup
-win_transition(eGAME.transition);
