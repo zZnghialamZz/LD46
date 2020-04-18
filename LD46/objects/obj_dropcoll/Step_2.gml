@@ -18,6 +18,9 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
+/// @description	Start to collapse if the player jumpin
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+if (place_meeting(x, y - 16, obj_player) && counter == 0)
+{
+	event_user(0);
+}

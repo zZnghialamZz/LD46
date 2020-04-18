@@ -18,6 +18,23 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
+/// @function		kill_player() 
+/// @description	Kill the Player
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+with (obj_player) {
+	is_control = false;
+	
+	direction = point_direction(other.x, other.y, x, y);
+	dx = lengthdir_x(3, direction);
+	dy = lengthdir_y(3, direction);
+	
+
+	if (sign(dx) != 0) image_xscale = sign(dx);
+	
+	game_set_speed(mGameFPS / 2, gamespeed_fps); // Slow motion
+	cam_shake(6, 60);
+	
+	state = ePSTATE.die;
+	
+	alarm[0] = 60; // Restart after 60 frames
+}

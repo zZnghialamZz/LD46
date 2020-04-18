@@ -18,6 +18,23 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
+/// @description	Your description goes here
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+// Shaking
+if (!is_done)
+{
+	if (counter > 0) { 
+		counter--;
+		if (counter == 0) { is_done = true; }
+	}
+	
+	x += xstart - x;
+	y += ystart - y;
+	x += random_range(-shake_remain, shake_remain);
+	y += random_range(-shake_remain, shake_remain);
+	shake_remain = max(0, shake_remain - (1/shake_length) * shake_magnitude);
+} else {
+	instance_destroy(my_coll);
+	instance_destroy();
+}
+

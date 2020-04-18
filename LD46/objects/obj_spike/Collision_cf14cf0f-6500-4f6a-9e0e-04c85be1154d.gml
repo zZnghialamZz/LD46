@@ -18,6 +18,6 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
+/// @description	Kill the player when collide
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+kill_player();

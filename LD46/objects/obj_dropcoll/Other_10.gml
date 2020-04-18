@@ -18,6 +18,8 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
-
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+/// @description	Shaking
+shake_magnitude = 1;
+shake_remain	= shake_magnitude;
+shake_length	= count_max;
+counter			= count_max;

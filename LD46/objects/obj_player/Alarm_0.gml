@@ -18,6 +18,9 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
+/// @description	Restart After Dead
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+game_set_speed(mGameFPS, gamespeed_fps);
+win_transition(eGAME.goto, room);
+
+is_control = true;

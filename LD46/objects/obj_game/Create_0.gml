@@ -49,6 +49,9 @@ if (!instance_exists(obj_controller))	global.gcontroller 	= instance_create_laye
 if (!instance_exists(obj_wtrans))		global.gwtransition	= instance_create_depth(0, 0, -1000, obj_wtrans);
 #endregion
 
+// Apply Default Settings
+game_set_speed(mGameFPS, gamespeed_fps);
+mResizeWindow;
 
 // Fade Screen At Startup
 win_transition(eGAME.transition);

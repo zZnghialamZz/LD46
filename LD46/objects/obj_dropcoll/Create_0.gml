@@ -18,6 +18,15 @@
 
 /* ********************************************************************* */
 
-/// @description	Update Anim
+/// @description	Init values
 
-if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+is_done = false;
+
+shake_length	= 0;
+shake_magnitude = 0;
+shake_remain	= 0;
+
+counter = 0;
+count_max = 90;
+
+my_coll = instance_create_depth(x, y, -1000, obj_coll);

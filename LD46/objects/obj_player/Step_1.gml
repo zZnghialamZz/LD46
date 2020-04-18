@@ -27,7 +27,9 @@ if (global.gstate != eGAME.run) exit; // Skip this step when game pause
 
 #region X -------------------------------
 
-dir = global.gcontroller.key_right - global.gcontroller.key_left;
+if (is_control) { dir = global.gcontroller.key_right - global.gcontroller.key_left; }
+else { dir = 0; }
+
 dx += (dir * walk_spd);
 
 #endregion
@@ -39,47 +41,65 @@ dx += (dir * walk_spd);
 if (global.has_grv && dashing_counter == 0) { dy += mGravity; }
 else { dashing_counter--; }
 
-// Coyote Timer
-if (!onland) {
-	if (coyote_counter > 0) {
-		coyote_counter--;
-		can_dash = true;
+if (is_control)
+{
+	// Coyote Timer
+	if (!onland) {
+		if (coyote_counter > 0) {
+			coyote_counter--;
+			can_dash = true;
 		
-		if (!jumped && global.gcontroller.key_jump) {
-			dy -= (jump_h + mGravity * (coyote_max - coyote_counter)); // Ensure full jump with gravity still apply
-			jumped = true;
+			if (!jumped && global.gcontroller.key_jump) {
+				dy -= (jump_h + mGravity * (coyote_max - coyote_counter)); // Ensure full jump with gravity still apply
+				jumped = true;
+			}
+		}
+	} else {
+		can_dash = false;
+		jumped = false;
+		coyote_counter = coyote_max;
+	}
+
+	// Jump Buffer
+	if (global.gcontroller.key_jump) { buffer_counter = buffer_max }
+	if (buffer_counter > 0) {
+		buffer_counter--;
+		if (onland) { 
+			dy -= jump_h;
+			jumped = true;	
+			can_dash = true;
+		
+			coyote_counter = 0; // Not need when jump on land
 		}
 	}
-} else {
-	can_dash = false;
-	jumped = false;
-	coyote_counter = coyote_max;
-}
 
-// Jump Buffer
-if (global.gcontroller.key_jump) { buffer_counter = buffer_max }
-if (buffer_counter > 0) {
-	buffer_counter--;
-	if (onland) { 
-		dy -= jump_h;
-		jumped = true;	
-		can_dash = true;
-		
-		coyote_counter = 0; // Not need when jump on land
+	// Gliding
+	if (state == ePSTATE.jumping && sign(dy) > 0 && global.gcontroller.key_up) 
+	{
+		dy -= 0.2;
+	}
+
+	// Dashing
+	if (can_dash && global.gcontroller.key_dash)
+	{
+		can_dash = false;
+		dashing_counter = dashing_max;
+	
+		input_direction = point_direction(0, 0, global.gcontroller.key_right - global.gcontroller.key_left, global.gcontroller.key_down - global.gcontroller.key_up);
+		input_magnitude = (global.gcontroller.key_right - global.gcontroller.key_left != 0) || (global.gcontroller.key_down - global.gcontroller.key_up != 0);
+		dx = lengthdir_x(input_magnitude * dash_spd, input_direction);
+		dy = lengthdir_y(input_magnitude * dash_spd, input_direction);
 	}
 }
-
-// Gliding
-if (state == ePSTATE.jumping && sign(dy) > 0 && global.gcontroller.key_up) 
-{
-	dy -= 0.2;
-}
-
 #endregion
 
 // Update state
-if (!onland) { state = ePSTATE.jumping; }
-else {
-	if (dx != 0) { state = ePSTATE.running; }
-	else { state = ePSTATE.idle; }
+
+if (state != ePSTATE.die)
+{
+	if (!onland) { state = ePSTATE.jumping; }
+	else {
+		if (dx != 0) { state = ePSTATE.running; }
+		else { state = ePSTATE.idle; }
+	}
 }
