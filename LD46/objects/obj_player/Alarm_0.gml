@@ -23,5 +23,8 @@
 game_set_speed(mGameFPS, gamespeed_fps);
 win_transition(eGAME.goto, room);
 
+x = global.save_loc_x;
+y = global.save_loc_y;
+
 is_control = true;
 state = ePSTATE.idle;

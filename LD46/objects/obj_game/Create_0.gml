@@ -23,17 +23,31 @@
 #region Global Variables
 enum eGAME
 {
+	menu,
 	run,
 	next,
 	goto,
 	pause,
 	restart,
-	quit,
+	ending,
 	transition
 }
 
-global.quit			= false;
-global.sound		= true;
+global.ending		= false;
+
+// Count Down Support
+global.counter		= false;
+global.count_time	= 60;
+count_text_scale	= 1;
+
+// Location Management
+global.save_loc_x	= 0;
+global.save_loc_y	= 0;
+
+// Score Value Management
+global.hearts = 0;
+global.apple = 0;
+global.value_loc = ds_list_create();
 
 global.has_grv		= true; // Platformer only
 #endregion

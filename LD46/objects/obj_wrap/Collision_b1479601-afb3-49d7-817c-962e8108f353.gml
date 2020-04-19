@@ -22,7 +22,16 @@
 
 if (rmtarget != room)
 {
+	obj_player.is_control = false;
+	
 	win_transition(eGAME.goto, rmtarget, 10);
+	obj_player.image_alpha = 0;
+	
 	obj_player.x = xtarget;
 	obj_player.y = ytarget;
+	
+	global.save_loc_x = xtarget;
+	global.save_loc_y = ytarget;
+		
+	alarm[0] = 30;
 }

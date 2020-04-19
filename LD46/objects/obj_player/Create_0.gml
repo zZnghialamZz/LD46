@@ -44,3 +44,12 @@ buffer_max		= 4;	// Amount of frames to allow for buffer
 coyote_counter	= 0;
 coyote_max		= 6;	// Amount of frames to allow for late jump
 jumped			= true;	// Player jump check
+
+if (global.save_loc_x == 0 && global.save_loc_y == 0)
+{
+	global.save_loc_x = xstart;
+	global.save_loc_y = ystart;
+}
+
+// Flashing
+flash = 0;

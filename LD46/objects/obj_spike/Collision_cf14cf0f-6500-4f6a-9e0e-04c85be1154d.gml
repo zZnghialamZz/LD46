@@ -20,5 +20,5 @@
 
 /// @description	Kill the player when collide
 
-if (other.state != ePSTATE.die)
+if (other.state != ePSTATE.die && global.gstate == eGAME.run)
 	kill_player();

@@ -5,7 +5,8 @@
     "name": "d3d8160a-17a6-4ddd-9c54-75e0bcf90e6c",
     "children": [
         "bc414eab-98fb-48fc-a67e-5b53622ee775",
-        "2222d0fa-a0be-4736-bc36-fc7d5915558a"
+        "2222d0fa-a0be-4736-bc36-fc7d5915558a",
+        "92fb6338-11d7-45ef-9eb2-fa6a4aac1449"
     ],
     "filterType": "GMObject",
     "folderName": "ui",

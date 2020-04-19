@@ -57,13 +57,6 @@ if (global.gstate != eGAME.run)
 				game_restart();
 				break;
 			}
-			case eGAME.quit:
-			{
-				global.gstate = eGAME.transition;
-				type = eTRANSTYPE.fade;
-				game_end();
-				break;
-			}
 		}
 	}
 }

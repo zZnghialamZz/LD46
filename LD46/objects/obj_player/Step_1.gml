@@ -50,8 +50,12 @@ if (is_control)
 			can_dash = true;
 		
 			if (!jumped && global.gcontroller.key_jump) {
+				audio_sound_pitch(snd_jump, choose(0.8, 1.0, 1.2));
+				audio_play_sound(snd_jump, 4, false);
+				
 				dy -= (jump_h + mGravity * (coyote_max - coyote_counter)); // Ensure full jump with gravity still apply
 				jumped = true;
+				repeat(5) { instance_create_layer(x, bbox_bottom, "lyr_entities", obj_dust); }
 			}
 		}
 	} else {
@@ -68,7 +72,10 @@ if (is_control)
 			dy -= jump_h;
 			jumped = true;	
 			can_dash = true;
-		
+			audio_sound_pitch(snd_jump, choose(0.8, 1.0, 1.2));
+			audio_play_sound(snd_jump, 4, false);
+			
+			repeat(5) { instance_create_layer(x, bbox_bottom, "lyr_entities", obj_dust); }
 			coyote_counter = 0; // Not need when jump on land
 		}
 	}
@@ -82,6 +89,11 @@ if (is_control)
 	// Dashing
 	if (can_dash && global.gcontroller.key_dash)
 	{
+		audio_sound_pitch(snd_jump, choose(1.2, 1.5));
+		audio_play_sound(snd_jump, 4, false);
+		
+		repeat(5) { instance_create_layer(x, bbox_bottom, "lyr_entities", obj_dust); }
+		
 		can_dash = false;
 		dashing_counter = dashing_max;
 	
@@ -99,7 +111,11 @@ if (state != ePSTATE.die)
 {
 	if (!onland) { state = ePSTATE.jumping; }
 	else {
-		if (dir != 0) { state = ePSTATE.running; }
+		if (dir != 0) { 
+			state = ePSTATE.running;
+			audio_sound_pitch(snd_footstep, choose(0.8, 1.0, 1.2));
+			audio_play_sound(snd_footstep, 3, false);
+		}
 		else { state = ePSTATE.idle; }
 	}
 }
