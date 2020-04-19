@@ -21,3 +21,39 @@
 /// @description	Update Anim
 
 if (global.gstate != eGAME.run) exit; // Skip this step when game pause
+
+switch(state)
+{
+	case ePSTATE.idle:
+	{
+		image_speed = 1;
+		sprite_index = spr_player_idle;
+		break;
+	}
+	case ePSTATE.running:
+	{
+		image_speed = 1;
+		sprite_index = spr_player_walk;
+		if (sign(dx) != 0) image_xscale = sign(dx);
+		break;
+	}
+	case ePSTATE.jumping:
+	{
+		if (sign(dx) != 0) image_xscale = sign(dx);
+		if (sign(dy) < 0) {
+			sprite_index = spr_player_jump;
+			image_speed = 1;
+		} else if (sign(dy) > 0) {
+			image_speed = 0;
+			sprite_index = spr_player_jump;
+			image_index = 3;
+		}
+		break;
+	}
+	case ePSTATE.die:
+	{	
+		image_speed = 1;
+		sprite_index = spr_player_die;
+		break;
+	}
+};

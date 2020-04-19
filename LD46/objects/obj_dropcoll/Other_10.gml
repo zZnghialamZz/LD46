@@ -23,3 +23,5 @@ shake_magnitude = 1;
 shake_remain	= shake_magnitude;
 shake_length	= count_max;
 counter			= count_max;
+
+alarm[0] = count_max + 10;

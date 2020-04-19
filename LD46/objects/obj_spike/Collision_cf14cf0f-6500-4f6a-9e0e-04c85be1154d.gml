@@ -20,4 +20,5 @@
 
 /// @description	Kill the player when collide
 
-kill_player();
+if (other.state != ePSTATE.die)
+	kill_player();

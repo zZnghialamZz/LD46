@@ -99,7 +99,7 @@ if (state != ePSTATE.die)
 {
 	if (!onland) { state = ePSTATE.jumping; }
 	else {
-		if (dx != 0) { state = ePSTATE.running; }
+		if (dir != 0) { state = ePSTATE.running; }
 		else { state = ePSTATE.idle; }
 	}
 }

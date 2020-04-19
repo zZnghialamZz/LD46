@@ -35,6 +35,7 @@ if (!is_done)
 	shake_remain = max(0, shake_remain - (1/shake_length) * shake_magnitude);
 } else {
 	instance_destroy(my_coll);
-	instance_destroy();
+	
+	y += mGravity * 3;
 }
 

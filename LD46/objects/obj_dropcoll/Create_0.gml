@@ -27,6 +27,6 @@ shake_magnitude = 0;
 shake_remain	= 0;
 
 counter = 0;
-count_max = 90;
+count_max = 60;
 
-my_coll = instance_create_depth(x, y, -1000, obj_coll);
+my_coll = instance_create_layer(x, y, layer_get_id("lyr_env"), obj_coll);

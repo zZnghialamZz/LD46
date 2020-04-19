@@ -24,3 +24,4 @@ game_set_speed(mGameFPS, gamespeed_fps);
 win_transition(eGAME.goto, room);
 
 is_control = true;
+state = ePSTATE.idle;
